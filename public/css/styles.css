@@ -64,9 +64,9 @@ hr {
     position: relative;
 }
 
-.dropdown{
+.dropdown.show{
     z-index:10;
-    position: relative;
+    position: absolute;
 }
 
 #sidenav{
@@ -74,6 +74,7 @@ hr {
 }
 
 .nav-link-2 {
+    position: relative;
     display: block;
     padding: 0.5rem 1rem;
     color: #0d6efd;
@@ -85,7 +86,7 @@ hr {
       transition: none;
     }
   }
-  .nav-link-2:hover, .nav-link:focus {
+  .nav-link-2:hover, .nav-link-2:focus {
     color: #0a58ca;
   }
   .nav-link-2.disabled {
