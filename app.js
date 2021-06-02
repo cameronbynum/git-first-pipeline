@@ -1,7 +1,15 @@
-var http = require('http');
+
+
+
+const express = require('express');
+const app = express();
+
 const port = process.env.port || 8080
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('Connected to git');
-}).listen(port, () => console.log('Listening on Port: ' + port));
+app.get('/', (req, res) => {
+  res.send("Welcome to the homepage")
+})
+
+app.listen(port, () =>{
+  console.log("new node js works")
+})
