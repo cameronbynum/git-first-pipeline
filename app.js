@@ -61,6 +61,45 @@ app.get('/pathing-visualizer', (req, res) => {
   });
 })
 
+app.get('/sorting-visualizer', (req, res) => {
+  fs.readFile('./public/html/sorting-visualizer.html', function(error, content) {
+    if (error) {
+        res.writeHead(500);
+        res.end();
+    }
+    else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content, 'utf-8');
+    }
+  });
+})
+
+app.get('/suggest-project', (req, res) => {
+  fs.readFile('./public/html/suggest-project.html', function(error, content) {
+    if (error) {
+        res.writeHead(500);
+        res.end();
+    }
+    else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content, 'utf-8');
+    }
+  });
+})
+
+app.get('/this-website', (req, res) => {
+  fs.readFile('./public/html/this-website.html', function(error, content) {
+    if (error) {
+        res.writeHead(500);
+        res.end();
+    }
+    else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content, 'utf-8');
+    }
+  });
+})
+
 app.listen(port, () =>{
   console.log("new node js works")
 })
