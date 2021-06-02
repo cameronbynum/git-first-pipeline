@@ -1,11 +1,51 @@
 const express = require('express');
 const app = express();
+const http = require('http');
+const fs = require('fs');
 const port = process.env.port || 8080
-var ran_num = require('./javascript/random_number_generator')
+app.use(express.static(__dirname+'/public'));
 
+// app.get('/', (req, res) => {
+//   res.send("Refresh page for new number: " + ran_num.between(0,1000))
+// })
 
-app.get('/', (req, res) => {
-  res.send("Refresh page for new number: " + ran_num.between(0,1000))
+app.get('/index.html', (req, res) => {
+  fs.readFile('./public/html/index.html', function(error, content) {
+    if (error) {
+        res.writeHead(500);
+        res.end();
+    }
+    else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content, 'utf-8');
+    }
+  });
+})
+
+app.get('/about-me.html', (req, res) => {
+  fs.readFile('./public/html/about-me.html', function(error, content) {
+    if (error) {
+        res.writeHead(500);
+        res.end();
+    }
+    else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content, 'utf-8');
+    }
+  });
+})
+
+app.get('/pathing-visualizer.html', (req, res) => {
+  fs.readFile('./public/html/pathing-visualizer.html', function(error, content) {
+    if (error) {
+        res.writeHead(500);
+        res.end();
+    }
+    else {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        res.end(content, 'utf-8');
+    }
+  });
 })
 
 app.listen(port, () =>{
