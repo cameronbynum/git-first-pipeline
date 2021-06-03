@@ -121,8 +121,10 @@ hr {
   border: 1px solid #ddd;
 }
 
-.grid-item:hover{
-  background-color: #0a58ca;
+
+
+grid-item-starting-point:hover{
+  background-color: crimson;
 }
 
 .visualizer-menu{
@@ -135,5 +137,9 @@ hr {
 
 .visualizer-menu-item{
   float:left;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  color: aliceblue;
   
 }
