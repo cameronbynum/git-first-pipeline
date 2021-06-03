@@ -6,9 +6,10 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid" style="padding-right: 120px;">
         <a class="navbar-brand" href="#"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,8 +38,21 @@
         </ul>
     </div>
     </div>
-</nav>   
+</nav>
+<header">
+    <div class="visualizer-menu fixed-top">
+        <div class="visualizer-menu-item">Algorithm</div>
+        <div class="visualizer-menu-item">Number of Rows</div>
+        <div class="visualizer-menu-item">Number of Columns</div>
+        <div class="visualizer-menu-item">Wall</div>
+        <div class="visualizer-menu-item">Starting Point</div>
+        <div class="visualizer-menu-item">Ending Point</div>
+    </div>
+</header>
 <body>
+    <div id="container"></div>
+    <script type="text/javascript" src="../javascript/pathing-visualizer/script.js"></script>
     <script src="../javascript/bootstrap/bootstrap.js"></script>
+
 </body>  
 </html> 

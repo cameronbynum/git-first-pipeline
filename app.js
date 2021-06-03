@@ -2,12 +2,9 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const fs = require('fs');
-const port = process.env.port || 8080
-app.use(express.static(__dirname+'/public'));
 
-// app.get('/', (req, res) => {
-//   res.send("Refresh page for new number: " + ran_num.between(0,1000))
-// })
+app.use(express.static(__dirname+'/public'));
+const port = process.env.port || 8080
 
 app.get('/index', (req, res) => {
   fs.readFile('./public/html/index.html', function(error, content) {
@@ -98,9 +95,15 @@ app.get('/this-website', (req, res) => {
         res.end(content, 'utf-8');
     }
   });
+
+})
+
+app.get('/this-website', (req, res) => {
+  res.write("testing testing")
+
 })
 
 app.listen(port, () =>{
-  console.log("new node js works")
+  console.log("Starting Server...")
 })
 

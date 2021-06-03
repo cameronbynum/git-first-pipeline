@@ -99,3 +99,41 @@ hr {
     color:white !important;
     background-color: #212529;
 }
+
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
+#container {
+  column-gap: 0px;
+  row-gap: 0px;
+  display: grid;
+  grid-template-rows: repeat(var(--grid-rows), 3em);
+  grid-template-columns: repeat(var(--grid-cols), 3em);
+  justify-content: center;
+  margin-top: 12rem;
+  margin-bottom: 12rem;
+  padding-bottom: 3.5rem;
+}
+
+.grid-item {
+  border: 1px solid #ddd;
+}
+
+.grid-item:hover{
+  background-color: #0a58ca;
+}
+
+.visualizer-menu{
+  background-color: #6c757d;
+  height: 5rem;
+  position: fixed;
+  margin-top: 3.5rem;
+  
+}
+
+.visualizer-menu-item{
+  float:left;
+  
+}
