@@ -41,12 +41,33 @@
 </nav>
 <header">
     <div class="visualizer-menu fixed-top">
-        <div class="visualizer-menu-item">Algorithm</div>
-        <div class="visualizer-menu-item">Number of Rows</div>
-        <div class="visualizer-menu-item">Number of Columns</div>
-        <div class="visualizer-menu-item">Wall</div>
-        <div class="visualizer-menu-item">Starting Point</div>
-        <div class="visualizer-menu-item">Ending Point</div>
+        <div class="visualizer-menu-item">
+            <label for="cars">Pathfinding Algorithm:</label>
+            <select name="cars" id="cars">
+              <option value="dijkstras">Dijkstra's</option>
+              <option value="a-star">A*</option>
+              <option value="sample">Sample</option>
+            </select>
+            <br><br>
+        </div>
+        <div class="visualizer-menu-item">Number of Rows:
+            <input type="number" min="1" value="10">
+        </div>
+        <div class="visualizer-menu-item">Number of Columns:
+            <input type="number" min="1" value="10">
+        </div>
+        <div class="visualizer-menu-item">
+            <input type="radio" id="starting-point" name="pathing-option" checked>
+            <label for="starting-point">Starting Point</label>
+        </div>
+        <div class="visualizer-menu-item">
+            <input type="radio" id="ending-point" name="pathing-option">
+            <label for="ending-point">Ending Point                     </label>
+        </div>
+        <div class="visualizer-menu-item">
+            <input type="radio" id="wall" name="pathing-option">
+            <label for="wall">Wall</label>
+        </div>
     </div>
 </header>
 <body>
