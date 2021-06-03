@@ -39,7 +39,7 @@
     </div>
     </div>
 </nav>
-<header">
+<header>
     <div class="visualizer-menu fixed-top">
         <div class="visualizer-menu-item">
             <label for="cars">Pathfinding Algorithm:</label>
@@ -51,10 +51,10 @@
             <br><br>
         </div>
         <div class="visualizer-menu-item">Number of Rows:
-            <input type="number" min="1" value="10">
+            <input type="number" min="1"  max ="100" value="10" oninput="createNewGrid()" id="rows">
         </div>
         <div class="visualizer-menu-item">Number of Columns:
-            <input type="number" min="1" value="10">
+            <input type="number" min="1" max ="100" value="10" oninput="createNewGrid()" id="cols">
         </div>
         <div class="visualizer-menu-item">
             <input type="radio" id="starting-point" name="pathing-option" checked>
@@ -70,7 +70,7 @@
         </div>
     </div>
 </header>
-<body>
+<body style="overflow: auto;">
     <div id="container"></div>
     <script type="text/javascript" src="../javascript/pathing-visualizer/script.js"></script>
     <script src="../javascript/bootstrap/bootstrap.js"></script>
