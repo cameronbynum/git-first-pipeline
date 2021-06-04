@@ -24,6 +24,7 @@ html, body {
 
 .navbar .navbar-collapse {
     text-align: center;
+    z-index: 1000;
   }
 
 .carousel-image{
@@ -116,7 +117,10 @@ hr {
   margin-left: 3.5rem;
   padding-bottom: 3.5rem;
   position: relative;
+  z-index: 9;
 }
+
+
 
 .grid-item {
   border: 1px solid #ddd;
@@ -133,7 +137,7 @@ grid-item-starting-point:hover{
   height: 5rem;
   position: fixed;
   margin-top: 3.5rem;
-  z-index: -1;
+  z-index: 10;
   
 }
 

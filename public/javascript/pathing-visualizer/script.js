@@ -1,3 +1,4 @@
+
 var mouseDown = 0;
 document.body.onmousedown = function() { 
   ++mouseDown;
@@ -9,22 +10,18 @@ document.body.onmouseup = function() {
 //function makeRows originated from https://stackoverflow.com/questions/57550082/creating-a-16x16-grid-using-javascript
 function makeRows(rows, cols, element) {
   var container = document.getElementById(element)
-  container.style.setProperty('--grid-rows', rows);
-  container.style.setProperty('--grid-cols', cols);
-  //container.style.setProperty('width', cols*3)
-  for (c = 0; c < (rows * cols); c++) {
-    let cell = document.createElement("div");
-    //cell.innerText = (c + 1);
-    // cell.style.setProperty('height', cell.style.getPropertyValue('width'));
-    cell.style.setProperty('height', 'auto');
-    cell.style.setProperty('width', 'auto');
-    cell.setAttribute('data-num', c+1)
-    cell.id = ('grid-item: ' + (c+1))
-    cell.addEventListener("mouseout",function(){
-      this.style.setProperty('background-color', 'white')
-    })
-    //el.setAttribute('data-foo', 'Hello World!');
-    container.appendChild(cell).className = "grid-item";
+  container.style.setProperty('--grid-rows', rows)
+  container.style.setProperty('--grid-cols', cols)
+  // for (c = 0; c < (rows * cols); c++) {
+  //   let node = createNode()
+  //   container.appendChild(node).className = "grid-item";
+  // }
+  for(let i = 0; i < rows; i++){
+    console.log("howdy")
+    for(let j = 0; j < cols; j++){
+      let node = createNode(i, j)
+      container.appendChild(node).className = "grid-item";
+    }
   }
 
   switch(document.querySelector('input[name = "pathing-option"]:checked').id) {
@@ -42,6 +39,21 @@ function makeRows(rows, cols, element) {
   }
 
 };
+
+function createNode(row, col){
+  let node = document.createElement("div")
+  node.style.setProperty('height', 'auto');
+  node.style.setProperty('width', 'auto');
+  node.setAttribute('data-row', row)
+  node.setAttribute('data-row', col)
+  node.setAttribute('data-isVisited', false)
+  //node.id = ('grid-item: ' + (c+1))
+  node.addEventListener("mouseout",function(){
+    this.style.setProperty('background-color', 'white')
+  })
+
+  return node;
+}
 
 function removeExtraPoints(pointName){
   var gridItems = document.getElementsByClassName('grid-item');
