@@ -57,16 +57,19 @@
             <input type="number" min="1" max ="100" value="10" oninput="createNewGrid()" id="cols">
         </div>
         <div class="visualizer-menu-item">
-            <input type="radio" id="starting-point" name="pathing-option" checked>
+            <input type="radio" id="starting-point" name="pathing-option" checked onclick="startingPointGridItems()">
             <label for="starting-point">Starting Point</label>
         </div>
         <div class="visualizer-menu-item">
-            <input type="radio" id="ending-point" name="pathing-option">
-            <label for="ending-point">Ending Point                     </label>
+            <input type="radio" id="ending-point" name="pathing-option" onclick="endingPointGridItems()">
+            <label for="ending-point">Ending Point</label>
         </div>
         <div class="visualizer-menu-item">
-            <input type="radio" id="wall" name="pathing-option">
+            <input type="radio" id="wall" name="pathing-option" onclick="wallGridItems()">
             <label for="wall">Wall</label>
+        </div>
+        <div class="visualizer-menu-item">
+            <button id="calculate-path" name="pathing-option">Calculate Shortest Path</button>
         </div>
     </div>
 </header>
@@ -74,6 +77,5 @@
     <div id="container"></div>
     <script type="text/javascript" src="../javascript/pathing-visualizer/script.js"></script>
     <script src="../javascript/bootstrap/bootstrap.js"></script>
-
-</body>  
+</body>
 </html> 
