@@ -1,3 +1,4 @@
+import {dijkstra, getNodesInShortestPathOrder} from './dijkstra.js';
 
 var mouseDown = 0;
 document.body.onmousedown = function() { 
@@ -12,14 +13,11 @@ function makeRows(rows, cols, element) {
   var container = document.getElementById(element)
   container.style.setProperty('--grid-rows', rows)
   container.style.setProperty('--grid-cols', cols)
-  // for (c = 0; c < (rows * cols); c++) {
-  //   let node = createNode()
-  //   container.appendChild(node).className = "grid-item";
-  // }
-  for(let i = 0; i < rows; i++){
+
+  for(let i = 1; i <= rows; i++){
     console.log("howdy")
-    for(let j = 0; j < cols; j++){
-      let node = createNode(i, j)
+    for(let j = 1; j <= cols; j++){
+      let node = createNode(i, j, (i*cols)+j)
       container.appendChild(node).className = "grid-item";
     }
   }
@@ -40,13 +38,36 @@ function makeRows(rows, cols, element) {
 
 };
 
-function createNode(row, col){
+function visualizeDijkstra() {
+  const {grid} = this.state;
+  const startNode = grid[START_NODE_ROW][START_NODE_COL];
+  const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+  const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
+  const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+  this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+}
+
+function getStartingNode(){
+  var gridItems = document.getElementsByClassName('grid-item');
+
+  for(let i = 0; i < gridItems.length; i++) {
+    var gridItem = gridItems[i];
+    if(gridItem.getAttribute("data-value")=='starting-node'){
+      return(gridItem.getAttribute)
+    }
+    
+    
+  }
+}
+
+function createNode(row, col, num){
   let node = document.createElement("div")
   node.style.setProperty('height', 'auto');
   node.style.setProperty('width', 'auto');
   node.setAttribute('data-row', row)
-  node.setAttribute('data-row', col)
+  node.setAttribute('data-col', col)
   node.setAttribute('data-isVisited', false)
+  node.setAttribute('data-num', num)
   //node.id = ('grid-item: ' + (c+1))
   node.addEventListener("mouseout",function(){
     this.style.setProperty('background-color', 'white')
@@ -58,7 +79,7 @@ function createNode(row, col){
 function removeExtraPoints(pointName){
   var gridItems = document.getElementsByClassName('grid-item');
 
-  for(var i = 0; i < gridItems.length; i++) {
+  for(let i = 0; i < gridItems.length; i++) {
     var gridItem = gridItems[i];
     if(gridItem.getAttribute("data-value")==pointName){
       gridItem.removeAttribute("data-value")
@@ -146,7 +167,8 @@ function createNewGrid(){
   makeRows(rows, cols, "container")
 }
 
-makeRows(rows = document.getElementById("rows").value, document.getElementById("cols").value, "container");
+console.log(document.getElementById("rows").value)
+makeRows(document.getElementById("rows").value, document.getElementById("cols").value, "container");
 
 // container.remove()
 // test = document.createElement("div");
