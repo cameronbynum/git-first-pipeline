@@ -134,7 +134,7 @@ grid-item-starting-point:hover{
 
 .visualizer-menu{
   background-color: #6c757d;
-  height: 5rem;
+  display: block;
   position: fixed;
   margin-top: 3.5rem;
   z-index: 10;
