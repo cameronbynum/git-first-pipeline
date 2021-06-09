@@ -65,7 +65,9 @@ function makeRows(rows, cols, element) {
   const visitedNodesInOrder = dijkstra(startNode, finishNode);
   //console.log(visitedNodesInOrder)
   const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-  this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+  //console.log(visitedNodesInOrder)
+  //console.log(nodesInShortestPathOrder)
+  //this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
 }
 
 function getNodeByName(name){
@@ -86,7 +88,7 @@ function createNode(row, col, num){
   node.style.setProperty('width', 'auto');
   node.setAttribute('data-row', row)
   node.setAttribute('data-col', col)
-  node.setAttribute('data-isVisited', false)
+  node.setAttribute('data-isvisited', false)
   node.setAttribute('data-num', num)
   node.setAttribute('data-distance', Infinity)
   node.innerHTML = num
