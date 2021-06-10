@@ -60,7 +60,10 @@ function makeRows(rows, cols, element) {
 };
 
  window.visualizeDijkstra = function() {
+  resetIsVisited()
+  resetDistance()
   const startNode = getNodeByName('starting-point')
+  console.log(startNode)
   const finishNode = getNodeByName('ending-point')
   const visitedNodesInOrder = dijkstra(startNode, finishNode);
   //console.log(visitedNodesInOrder)
@@ -68,6 +71,22 @@ function makeRows(rows, cols, element) {
   //console.log(visitedNodesInOrder)
   //console.log(nodesInShortestPathOrder)
   //this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
+}
+
+function resetIsVisited(){
+  var nodes = document.getElementsByClassName('grid-item');
+  for(let i = 0; i < nodes.length; i++){
+    var node = nodes[i]
+    node.dataset.isvisited = false
+  }
+}
+
+function resetDistance(){
+  var nodes = document.getElementsByClassName('grid-item');
+  for(let i = 0; i < nodes.length; i++){
+    var node = nodes[i]
+    node.dataset.distance = Infinity
+  }
 }
 
 function getNodeByName(name){

@@ -4,21 +4,25 @@
 // by backtracking from the finish node.
 export function dijkstra(startNode, finishNode) {
   const visitedNodesInOrder = [];
-  startNode.dataset.distance = Infinity;
+  //console.log(startNode)
+  startNode.dataset.distance = 0  ;
+  console.log(startNode)
   const unvisitedNodes = [].slice.call(document.getElementsByClassName('grid-item'));
+  //console.log(unvisitedNodes)
+  //console.log(unvisitedNodes)
   const allNodes = [].slice.call(document.getElementsByClassName('grid-item'));
-
   while (!!unvisitedNodes.length) {
     sortNodesByDistance(unvisitedNodes);
     const closestNode = unvisitedNodes.shift();
+    //console.log(closestNode)
     // If we encounter a wall, we skip it.
-    if (closestNode.isWall) continue;
+    if (closestNode.dataset.value=='wall') continue;
     // If the closest node is at a distance of infinity,
     // we must be trapped and should therefore stop.
     if (closestNode.dataset.distance === Infinity) return visitedNodesInOrder;
-    console.log(closestNode.dataset.isvisited)
-    closestNode.dataset.isvisited = true;
-    console.log(closestNode.dataset.isvisited)
+    //console.log(closestNode.dataset.isvisited)
+    //closestNode.dataset.isvisited = true;
+    //console.log(closestNode.dataset.isvisited)
     visitedNodesInOrder.push(closestNode);
     if (closestNode === finishNode) return visitedNodesInOrder;
     updateUnvisitedNeighbors(closestNode, allNodes);
@@ -26,7 +30,9 @@ export function dijkstra(startNode, finishNode) {
 }
 
 function sortNodesByDistance(unvisitedNodes) {
-  Array.prototype.slice(unvisitedNodes).sort((nodeA, nodeB) => nodeA.dataset.distance - nodeB.dataset.distance);
+  console.log(unvisitedNodes[0].dataset.distance)
+  //todo may not be sorting, create function
+  unvisitedNodes.sort((nodeA, nodeB) => nodeA.dataset.distance - nodeB.dataset.distance);
 }
 
 function updateUnvisitedNeighbors(node, allNodes) {
@@ -61,17 +67,20 @@ function getUnvisitedNeighbors(node, allNodes) {
     neighbors.push(allNodes[((row*maxCols + col)+maxCols)])
     //console.log("2")
   }
-  //if col is zero then no neighbor above
+  //if col is zero then no neighbor to left
   if (col > 0) {
     neighbors.push(allNodes[parseInt((row*maxCols + col)-1)])
     //console.log("3")
+    console.log(allNodes[parseInt((row*maxCols + col)-1)].dataset.isvisited)
+    console.log(allNodes[parseInt((row*maxCols + col)-1)])
   }
-  //if col is last col then no neighbor beneath
+  //if col is last col then no neighbor to right
   if (col < maxCols){
     neighbors.push(allNodes[parseInt((row*maxCols + col)+1)])
     //console.log("4")
   }
-  console.log(neighbors)
+  console.log(neighbors[0].dataset.isvisited)
+  //todo not filtering, create function
   return neighbors.filter(neighbor => !neighbor.dataset.isvisited);
 }
 
