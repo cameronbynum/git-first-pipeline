@@ -63,7 +63,7 @@ function makeRows(rows, cols, element) {
   resetIsVisited()
   resetDistance()
   const startNode = getNodeByName('starting-point')
-  console.log(startNode)
+  //console.log(startNode)
   const finishNode = getNodeByName('ending-point')
   const visitedNodesInOrder = dijkstra(startNode, finishNode);
   //console.log(visitedNodesInOrder)

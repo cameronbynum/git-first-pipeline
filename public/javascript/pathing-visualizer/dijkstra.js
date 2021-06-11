@@ -5,7 +5,8 @@
 export function dijkstra(startNode, finishNode) {
   const visitedNodesInOrder = [];
   //console.log(startNode)
-  startNode.dataset.distance = 0  ;
+  startNode.dataset.distance = 0;
+  startNode.dataset.isvisited = true;
   console.log(startNode)
   const unvisitedNodes = [].slice.call(document.getElementsByClassName('grid-item'));
   //console.log(unvisitedNodes)
@@ -21,7 +22,7 @@ export function dijkstra(startNode, finishNode) {
     // we must be trapped and should therefore stop.
     if (closestNode.dataset.distance === Infinity) return visitedNodesInOrder;
     //console.log(closestNode.dataset.isvisited)
-    //closestNode.dataset.isvisited = true;
+    closestNode.dataset.isvisited = true;
     //console.log(closestNode.dataset.isvisited)
     visitedNodesInOrder.push(closestNode);
     if (closestNode === finishNode) return visitedNodesInOrder;
@@ -71,17 +72,29 @@ function getUnvisitedNeighbors(node, allNodes) {
   if (col > 0) {
     neighbors.push(allNodes[parseInt((row*maxCols + col)-1)])
     //console.log("3")
-    console.log(allNodes[parseInt((row*maxCols + col)-1)].dataset.isvisited)
-    console.log(allNodes[parseInt((row*maxCols + col)-1)])
   }
   //if col is last col then no neighbor to right
   if (col < maxCols){
     neighbors.push(allNodes[parseInt((row*maxCols + col)+1)])
     //console.log("4")
   }
-  console.log(neighbors[0].dataset.isvisited)
+  console.log(filterNeighbors(neighbors))
   //todo not filtering, create function
-  return neighbors.filter(neighbor => !neighbor.dataset.isvisited);
+  return filterNeighbors(neighbors)
+  //return neighbors.filter(neighbor => !neighbor.dataset.isvisited);
+}
+
+function filterNeighbors(neighbors){
+  var filteredNeighbors = []
+  
+  for(let i = 0; i < neighbors.length; i++){
+    let neighbor = neighbors[i]
+    if(neighbor.dataset.isvisited != true){
+      filteredNeighbors.push(neighbor)
+    }
+  }
+  
+  return filteredNeighbors
 }
 
 function getNodeByNum(num){
@@ -99,13 +112,21 @@ function getNodeByNum(num){
 export function getNodesInShortestPathOrder(finishNode) {
   const nodesInShortestPathOrder = [];
   let currentNode = finishNode;
-  while (currentNode !== null) {
-     console.log(currentNode)
+  for(let i = 0; i < 10; i++){
+    console.log(currentNode)
     // console.log(currentNode.dataset.previousNode)
     nodesInShortestPathOrder.unshift(currentNode);
     console.log(getNodeByNum(currentNode.dataset.previousnode))
     currentNode = getNodeByNum(currentNode.dataset.previousnode)
     console.log(currentNode)
   }
+  // while (currentNode !== null) {
+  //    console.log(currentNode)
+  //   // console.log(currentNode.dataset.previousNode)
+  //   nodesInShortestPathOrder.unshift(currentNode);
+  //   console.log(getNodeByNum(currentNode.dataset.previousnode))
+  //   currentNode = getNodeByNum(currentNode.dataset.previousnode)
+  //   console.log(currentNode)
+  // }
   return nodesInShortestPathOrder;
 }
