@@ -111,7 +111,7 @@ function createNode(row, col, num){
   node.setAttribute('data-num', num)
   node.setAttribute('data-distance', Infinity)
   node.innerHTML = num
-  //node.id = ('grid-item: ' + (c+1))
+  node.id = num
   node.addEventListener("mouseout",function(){
     this.style.setProperty('background-color', 'white')
   })

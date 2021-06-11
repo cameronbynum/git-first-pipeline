@@ -31,7 +31,10 @@ export function dijkstra(startNode, finishNode) {
 }
 
 function sortNodesByDistance(unvisitedNodes) {
-  console.log(unvisitedNodes[0].dataset.distance)
+  // console.log(unvisitedNodes[0].dataset.distance)
+  // unvisitedNodes[0].innerHTML = unvisitedNodes[0].dataset.distance
+  var node = document.getElementById(unvisitedNodes[0].id)
+  node.innerHTML = (unvisitedNodes[0].dataset.distance)
   //todo may not be sorting, create function
   unvisitedNodes.sort((nodeA, nodeB) => nodeA.dataset.distance - nodeB.dataset.distance);
 }
