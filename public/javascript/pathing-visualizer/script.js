@@ -65,8 +65,8 @@ function makeRows(rows, cols, element) {
   const startNode = getNodeByName('starting-point')
   const finishNode = getNodeByName('ending-point')
   const visitedNodesInOrder = dijkstra(startNode, finishNode);
-  //console.log(visitedNodesInOrder)
-  //const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+  console.log(visitedNodesInOrder)
+  const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
   //console.log(nodesInShortestPathOrder)
   //this.animateDijkstra(visitedNodesInOrder, [nodesInShortestPathOrder]);
   animateDijkstra(visitedNodesInOrder);
@@ -81,7 +81,7 @@ function animateDijkstra(visitedNodesInOrder){
     // wait(timeout, node)
     setTimeout(() => {
       const node = document.getElementById(visitedNodesInOrder[i].id)
-      node.style.setProperty('background-color', 'green')
+      node.classList.add('grid-item-visited')
       node.addEventListener("mouseout",function(){
         this.style.setProperty('background-color', 'green')
       })
@@ -128,7 +128,7 @@ function createNode(row, col, num){
   node.setAttribute('data-isvisited', false)
   node.setAttribute('data-num', num)
   node.setAttribute('data-distance', Infinity)
-  node.innerHTML = num
+  //node.innerHTML = num
   node.id = num
   node.addEventListener("mouseout",function(){
     this.style.setProperty('background-color', 'white')

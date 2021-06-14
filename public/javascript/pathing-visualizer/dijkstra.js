@@ -16,7 +16,7 @@ export function dijkstra(startNode, finishNode) {
     // If the closest node is at a distance of infinity,
     // we must be trapped and should therefore stop.
     if (closestNode.dataset.distance === Infinity) return visitedNodesInOrder;
-    closestNode.dataset.isvisited = true;
+    //closestNode.dataset.isvisited = true;
     visitedNodesInOrder.push(closestNode);
     if (closestNode === finishNode) return visitedNodesInOrder;
     updateUnvisitedNeighbors(closestNode, allNodes);
@@ -24,9 +24,10 @@ export function dijkstra(startNode, finishNode) {
 }
 
 function sortNodesByDistance(unvisitedNodes) {
-  var node = document.getElementById(unvisitedNodes[0].id)
-  node.innerHTML = (unvisitedNodes[0].dataset.distance)
+
   unvisitedNodes.sort((nodeA, nodeB) => nodeA.dataset.distance - nodeB.dataset.distance);
+  // var node = document.getElementById(unvisitedNodes[0].id)
+  // node.innerHTML = (unvisitedNodes[0].dataset.distance)
 }
 
 function updateUnvisitedNeighbors(node, allNodes) {
@@ -34,7 +35,11 @@ function updateUnvisitedNeighbors(node, allNodes) {
   //console.log(unvisitedNeighbors)
   for (const neighbor of unvisitedNeighbors) {
     neighbor.dataset.distance = +node.dataset.distance + 1;
-    neighbor.setAttribute('data-previousNode', node.dataset.num)
+    neighbor.setAttribute('data-previousnode', node.dataset.num)
+    neighbor.dataset.isvisited = true
+    //console.log(neighbor)
+    // var node = document.getElementById(unvisitedNodes[0].id)
+    // node.innerHTML = (unvisitedNodes[0].dataset.previousnode)
   }
 }
 
@@ -60,17 +65,22 @@ function getUnvisitedNeighbors(node, allNodes) {
   if (col < maxCols-1){
     neighbors.push(allNodes[parseInt((row*maxCols + col)+1)])
   }
-  //console.log(filterNeighbors(neighbors))
+  console.log(filterNeighbors(neighbors))
   return filterNeighbors(neighbors)
 }
 
 function filterNeighbors(neighbors){
   var filteredNeighbors = []
+
   
   for(let i = 0; i < neighbors.length; i++){
     let neighbor = neighbors[i]
     if(neighbor.dataset.isvisited != true){
       filteredNeighbors.push(neighbor)
+      console.log(neighbor.dataset.isvisited)
+    }
+    else{
+      console.log(neighbor.dataset.isvisited)
     }
   }
   
@@ -94,7 +104,7 @@ export function getNodesInShortestPathOrder(finishNode) {
   let currentNode = finishNode;
   for(let i = 0; i < 10; i++){
     //console.log(currentNode)
-    // console.log(currentNode.dataset.previousNode)
+    console.log(currentNode.dataset.previousnode)
     nodesInShortestPathOrder.unshift(currentNode);
     //console.log(getNodeByNum(currentNode.dataset.previousnode))
     currentNode = getNodeByNum(currentNode.dataset.previousnode)
@@ -102,7 +112,7 @@ export function getNodesInShortestPathOrder(finishNode) {
   }
   // while (currentNode !== null) {
   //    console.log(currentNode)
-  //   // console.log(currentNode.dataset.previousNode)
+  //   console.log(currentNode.dataset.previousnode)
   //   nodesInShortestPathOrder.unshift(currentNode);
   //   console.log(getNodeByNum(currentNode.dataset.previousnode))
   //   currentNode = getNodeByNum(currentNode.dataset.previousnode)
