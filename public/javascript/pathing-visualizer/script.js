@@ -65,28 +65,17 @@ function makeRows(rows, cols, element) {
   const startNode = getNodeByName('starting-point')
   const finishNode = getNodeByName('ending-point')
   const visitedNodesInOrder = dijkstra(startNode, finishNode);
-  console.log(visitedNodesInOrder)
   const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-  //console.log(nodesInShortestPathOrder)
-  //this.animateDijkstra(visitedNodesInOrder, [nodesInShortestPathOrder]);
-  animateDijkstra(visitedNodesInOrder);
+  animateDijkstra(visitedNodesInOrder, 'grid-item-visited');
+  animateDijkstra(nodesInShortestPathOrder, 'grid-item-shortest-path', visitedNodesInOrder.length*50);
 }
 
-function animateDijkstra(visitedNodesInOrder){
+function animateDijkstra(visitedNodesInOrder, changeClass, offset=0){
   for(let i = 0; i < visitedNodesInOrder.length; i++){
-    // let timeout = 1000
-    // console.log(timeout)
-    // let node = document.getElementById(visitedNodesInOrder[i].id)
-    // //var nodeSetColor = function(){node.style.setProperty('background-color', 'green')}
-    // wait(timeout, node)
     setTimeout(() => {
       const node = document.getElementById(visitedNodesInOrder[i].id)
-      node.classList.add('grid-item-visited')
-      node.addEventListener("mouseout",function(){
-        this.style.setProperty('background-color', 'green')
-      })
-    }, 100 * i);
-
+      node.classList.add(changeClass)
+    },(50 * i) + offset);
 
   }
 }
