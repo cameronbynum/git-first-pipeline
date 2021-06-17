@@ -14,20 +14,24 @@ function makeRows(rows, cols, element) {
   container.style.setProperty('--grid-rows', rows)
   container.style.setProperty('--grid-cols', cols)
 
+  //even though nodes are in 1d array, create them in double for loop for readablity
   for(let i = 0; i < rows; i++){
     for(let j = 0; j < cols; j++){
 
       let node = createNode(i, j, (i*cols)+j)
+
+      //default starting node at 0,0
       if(i == 0 && j == 0){
-        if(node.getAttribute("data-value")!='wall'){
-          removeExtraNodes('starting-point')
-          node.setAttribute('data-value', 'starting-point')
-          node.style.setProperty('background-color', 'red')
-          node.addEventListener("mouseout",function(){
-            node.style.setProperty('background-color', 'red')
-          })
-        }
+        removeExtraNodes('starting-point')
+        node.setAttribute('data-value', 'starting-point')
+        node.style.setProperty('background-color', 'green')
+        node.addEventListener("mouseout",function(){
+          node.style.setProperty('background-color', 'green')
+        })
+        //
       }
+
+      //default end node at 9,9
       if(i == 9 && j == 9){
         if(node.getAttribute("data-value")!='wall'){
           removeExtraNodes('ending-point')
@@ -38,8 +42,10 @@ function makeRows(rows, cols, element) {
           })
         }
       }
-      
+
+      //finally, add them all to the container
       container.appendChild(node).className = "grid-item";
+
     }
   }
 
@@ -58,6 +64,21 @@ function makeRows(rows, cols, element) {
   }
 
 };
+
+window.calculateShortestPath = function() {
+// var skillsSelect = document.getElementById("newSkill");
+// var selectedText = skillsSelect.options[skillsSelect.selectedIndex].text;
+  var path = document.getElementById('path')
+  var selectedPath = path.options[path.selectedIndex].text
+  console.log(selectedPath)
+  switch(selectedPath) {
+    case 'Dijkstra\'s (Unweighted)':
+      visualizeDijkstra()
+      break;
+    default:
+      
+  }
+}
 
  window.visualizeDijkstra = function() {
   resetIsVisited()
@@ -102,9 +123,7 @@ function getNodeByName(name){
     var gridItem = gridItems[i];
     if(gridItem.getAttribute("data-value")==name){
       return(gridItem)
-    }
-    
-    
+    }    
   }
 }
 
@@ -117,12 +136,10 @@ function createNode(row, col, num){
   node.setAttribute('data-isvisited', false)
   node.setAttribute('data-num', num)
   node.setAttribute('data-distance', Infinity)
-  //node.innerHTML = num
   node.id = num
   node.addEventListener("mouseout",function(){
     this.style.setProperty('background-color', 'white')
   })
-
   return node;
 }
 
@@ -139,8 +156,6 @@ function removeExtraNodes(nodeName){
       })
       break
     }
-    
-    
   }
 }
 
@@ -150,14 +165,14 @@ function removeExtraNodes(nodeName){
   for(var i = 0; i < gridItems.length; i++) {
     var gridItem = gridItems[i];
     gridItem.addEventListener("mouseover",function(){
-      this.style.setProperty('background-color', 'red')
+      this.style.setProperty('background-color', 'green')
     })
     gridItem.onclick = function() {
       if(this.getAttribute("data-value")!='wall'){
         removeExtraNodes('starting-point')
         this.setAttribute('data-value', 'starting-point')
         this.addEventListener("mouseout",function(){
-          this.style.setProperty('background-color', 'red')
+          this.style.setProperty('background-color', 'green')
         })
       }
     }

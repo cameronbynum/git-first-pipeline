@@ -44,9 +44,9 @@
 <header>
     <div class="visualizer-menu fixed-top">
         <div class="visualizer-menu-item">
-            <label for="cars">Pathfinding Algorithm:</label>
-            <select name="cars" id="cars">
-              <option value="dijkstras">Dijkstra's</option>
+            <label for="calculate-path">Pathfinding Algorithm:</label>
+            <select name="calculate-path" id="path">
+              <option value="dijkstras">Dijkstra's (Unweighted)</option>
               <option value="a-star">A* (WIP)</option>
             </select>
             <br><br>
@@ -70,7 +70,7 @@
             <label for="wall">Wall</label>
         </div>
         <div class="visualizer-menu-item">
-            <button id="calculate-path" name="pathing-option" onclick="visualizeDijkstra()">Calculate Shortest Path</button>
+            <button id="calculate-path" name="pathing-option" onclick="calculateShortestPath()">Calculate Shortest Path</button>
         </div>
     </div>
 </header>

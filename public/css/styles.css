@@ -120,6 +120,16 @@ hr {
   z-index: 9;
 }
 
+/* .starting-point{
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+} */
+
+.ending-point{
+  border-radius: 50%;
+}
+
 .grid-item {
   border: 1px solid #ddd;
 }
@@ -147,8 +157,8 @@ grid-item-starting-point:hover{
 }
 
 #calculate-path{
-  display: inline-block;
   margin: 10px;
+  height: 50%;
 }
 
 .grid-item-visited {
@@ -215,6 +225,6 @@ grid-item-starting-point:hover{
 
   100% {
     transform: scale(1);
-    background-color: rgba(17, 235, 82, 0.75);
+    background-color: rgba(250, 145, 8, 0.75);
   }
 }
