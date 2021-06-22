@@ -229,9 +229,45 @@ grid-item-starting-point:hover{
   }
 }
 
-.index-backdrop{
+/* .index-backdrop{
   height: 100%;
   position: relative; 
   background: rgb(52,114,149);
   background: linear-gradient(90deg, rgba(52,114,149,1) 0%, rgba(26,9,121,0.700717787114846) 50%, rgba(188,0,255,0.39539565826330536) 100%);
+} */
+
+.bg {
+  animation:slide 3s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, rgb(233, 236, 57) 50%, rgb(63, 163, 130) 50%);
+  bottom:0;
+  left:-50%;
+  opacity:1;
+  position:fixed;
+  right:-50%;
+  top:0;
+  z-index:-1;
+}
+
+.bg2 {
+  animation-direction:alternate-reverse;
+  animation-duration:4s;
+}
+
+.bg3 {
+  animation-duration:5s;
+}
+
+.content {
+  background-color:rgba(255,255,255,.8);
+  height: 100%;
+  position: relative;
+}
+
+@keyframes slide {
+  0% {
+    transform:translateX(-25%);
+  }
+  100% {
+    transform:translateX(25%);
+  }
 }
