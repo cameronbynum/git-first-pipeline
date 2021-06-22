@@ -22,10 +22,18 @@ html, body {
     position: absolute;
 }
 
-.navbar .navbar-collapse {
+.navbar{
+  height: 6%;
+}
+
+.navbar .navbar-collapse{
     text-align: center;
     z-index: 1000;
-  }
+}
+
+.index-content{
+  height: 94%;
+}
 
 .carousel-image{
     
@@ -238,7 +246,7 @@ grid-item-starting-point:hover{
 
 .bg {
   animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, rgb(233, 236, 57) 50%, rgb(63, 163, 130) 50%);
+  background-image: linear-gradient(330deg, rgb(233, 236, 57) 50%, rgb(63, 163, 130) 50%);
   bottom:0;
   left:-50%;
   opacity:1;
@@ -250,7 +258,7 @@ grid-item-starting-point:hover{
 
 .bg2 {
   animation-direction:alternate-reverse;
-  animation-duration:4s;
+  animation-duration:5s;
 }
 
 .bg3 {
