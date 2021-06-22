@@ -17,7 +17,7 @@ export function dijkstra(startNode, finishNode) {
     if (closestNode.dataset.distance === Infinity) return visitedNodesInOrder;
     visitedNodesInOrder.push(closestNode);
     if (closestNode === finishNode) return visitedNodesInOrder;
-    updateUnvisitedNeighbors(closestNode, allNodes);
+    updateUnvisitedNeighbors(closestNode, allNodes);1
   }
 }
 
