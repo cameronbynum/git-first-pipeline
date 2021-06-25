@@ -20,6 +20,8 @@ html, body {
 .self-portrait{
     margin: 0 auto; /* Added */
     position: absolute;
+    height: auto;
+    width: 100%;
 }
 
 .navbar{

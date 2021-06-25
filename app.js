@@ -98,9 +98,17 @@ app.get('/this-website', (req, res) => {
 
 })
 
-app.get('/this-website', (req, res) => {
-  res.write("testing testing")
-
+app.get('/resume', (req, res) => {
+  fs.readFile('./public/resume.pdf', function(error, content) {
+    if (error) {
+        res.writeHead(500);
+        res.end();
+    }
+    else {
+        res.writeHead(200, { 'Content-Type': 'text/pdf' });
+        res.end(content, 'utf-8');
+    }
+  });
 })
 
 app.listen(port, () =>{
